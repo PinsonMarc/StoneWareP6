@@ -1,20 +1,175 @@
 # StoneWareP6
 OpenClassrooms Project 6 : Design and creation of a database with stored procedure
- 
+
+## Documentation 
+
+### Stored procedure 
+
+#### `spOutstanding` & `spResolved`
+
+```sql
+EXEC spResolved;
+EXEC spOutstanding;
+```
+---
+#### `spProductOutstanding` & `spProductResolved`
+
+| Parameter        | Type           |
+| :------------- |:-------------|
+| ProductId      | int |
+
+```sql
+EXEC spProductOutstanding;
+	@ProductId = 1	
+```
+---
+#### `spProductVersionOutstanding` & `spProductVersionResolved`
+
+| Parameter        | Type           |
+| :------------- |:-------------|
+| ProductId      | int |
+| VersionId      | int |
+
+```sql
+EXEC spProductVersionOutstanding;
+	@ProductId = 1,
+	@VersionId = 1
+```
+---
+#### `spProductDateRangeOutstanding` & `spProductDateRangeResolved`
+
+| Parameter        | Type           |
+| :------------- |:-------------|
+| ProductId      | int |
+| StartDate      | datetime |
+| EndDate      | datetime |
+
+```sql
+EXEC spProductDateRangeOutstanding;
+	@ProductId = 1,
+	@StartDate = '2022-10-10',
+	@EndDate = '2022-10-20'
+```
+---
+#### `spProductVersionDateRangeOutstanding` & `spProductVersionDateRangeResolved`
+
+| Parameter        | Type           |
+| :------------- |:-------------|
+| ProductId      | int |
+| StartDate      | datetime |
+| EndDate      | datetime |
+| VersionId      | int |
+
+```sql
+EXEC spProductVersionDateRangeOutstanding;
+	@ProductId = 1,
+	@VersionId = 1,
+	@StartDate = '2022-10-10',
+	@EndDate = '2022-10-20'
+```
+---
+#### `spSearchOutstanding` & `spSearchResolved`
+
+| Parameter        | Type           |
+| :------------- |:-------------|
+| KeyWords      | varchar |
+
+```sql
+EXEC spSearchOutstanding;
+	@KeyWords = 'clicking window'
+```
+---
+#### `spProductSearchOutstanding` & `spProductSearchResolved`
+
+| Parameter        | Type           |
+| :------------- |:-------------|
+| ProductId      | int |
+| KeyWords      | varchar |
+
+```sql
+EXEC spProductSearchOutstanding;	
+	@ProductId = 1,
+	@KeyWords = 'clicking window'
+```
+---
+#### `spProductVersionSearchOutstanding` & `spProductDateRangeSearchResolved`
+
+| Parameter        | Type           |
+| :------------- |:-------------|
+| ProductId      | int |
+| VersionId      | int |
+| KeyWords      | varchar |
+
+```sql
+EXEC spProductVersionSearchOutstanding;	
+	@ProductId = 1,
+	@VersionId = 1,
+	@KeyWords = 'clicking window'
+```
+---
+#### `spProductDateRangeSearchOutstanding` & `spProductVersionSearchResolved`
+
+| Parameter        | Type           |
+| :------------- |:-------------|
+| ProductId      | int |
+| StartDate      | datetime |
+| EndDate      | datetime |
+| KeyWords      | varchar |
+
+```sql
+EXEC spProductDateRangeSearchOutstanding;	
+	@ProductId = 1,
+	@StartDate = '2022-10-10',
+	@EndDate = '2022-10-20',
+	@KeyWords = 'clicking window'
+```
+---
+#### `spProductVersionDateRangeSearchOutstanding` & `spProductVersionDateRangeSearchResolved`
+
+| Parameter        | Type           |
+| :------------- |:-------------|
+| ProductId      | int |
+| VersionId      | int |
+| StartDate      | datetime |
+| EndDate      | datetime |
+| KeyWords      | varchar |
+
+```sql
+EXEC spProductVersionDateRangeSearchOutstanding;	
+	@ProductId = 1,
+	@VersionId = 1,
+	@StartDate = '2022-10-10',
+	@EndDate = '2022-10-20',
+	@KeyWords = 'clicking window'
+```
+
+### Returning table description
+
+#### `Outstanding` procedures :
+| Name        | Type           |
+| :------------- |:-------------|
+| Product      | varchar |
+| Version     | varchar      |
+| OS | varchar   |
+| Description | varchar     |
+| CreationDate | DateTime     |
+
+
+#### `Resolved` procedures :
+| Name        | Type           |
+| :------------- |:-------------|
+| Product      | varchar |
+| Version     | varchar      |
+| OS | varchar   |
+| Description | varchar     |
+| CreationDate | DateTime     |
+| Resolution | varchar     |
+| ResolvedDate | DateTime     |
+---
 
 ## Entity-relationship diagram
+
 See the database design :
-
-
-## Example - set the assignments data source
- 
-    EXEC spProductVersionDateRangeSearchOutstanding
-		@ProductId = 1,
-		@VersionId = 1,
-		@KeyWords = 'admin granting',
-		@StartDate = '2022-10-10',
-		@EndDate = '2022-10-20'
-
 ![StonewareERD](https://github.com/PinsonMarc/StoneWareP6/blob/relational-database-basics/ERD.png)
 
 the .bacpac also include a 50+ issues dataset
