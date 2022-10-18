@@ -5,6 +5,11 @@ OpenClassrooms Project 6 : Design and creation of a database with stored procedu
 
 ### Stored procedure 
 
+| Resolved           | Outstanding | Product  | Version | DateRange           | Search | 
+| :-------------: |:-------------:| :-------------: |:-------------:| :-------------: |:-------------:| 
+| Only resolved issue| Only Outstanding issue  | Issue on a specified Product using product id| Issue on a specified Version using version id | Created/Resolved in a specified date range | Full-text earch issues using a list of keywords in a string separated with spaces |
+
+---
 #### `spOutstanding` & `spResolved`
 
 ```sql
@@ -170,6 +175,7 @@ EXEC spProductVersionDateRangeSearchOutstanding;
 ## Entity-relationship diagram
 
 See the database design :
+
 ![StonewareERD](https://github.com/PinsonMarc/StoneWareP6/blob/relational-database-basics/ERD.png)
 
 the .bacpac also include a 50+ issues dataset
